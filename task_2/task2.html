@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="../css/style.css">
+	<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+	<title>task_2</title>
+</head>
+<body>
+	<main class="page2">
+		<div class="page2__container">
+			<h2>Задача №2</h2>
+			<p class="text"> З випадаючого списку вибираємо клас квитка у літаку. Якщо 
+1) бізнес -  виводимо елементи для вибору газети та коньяку (якщо вибрано коньяк, то запропонувати закуску (так/ні)), на фоні зображення бізнес кают 
+2) економ – виводимо елементи для вибору типу пива і чипсів, на фоні хмарки.
+</p>
+			<div class="page__task task" id="app">
+				<h2>Оберіть класс у літаку</h2>
+					<select @change name="form[]" data-class-modif="form" v-model="activeChoose">
+						<option value="business">Бизнесс</option>
+						<option value="ekonom">Економ</option>
+					</select>
+					<div>
+						<div v-if="isBusiness" class="box" :class="activeClass">
+							<h4 class="title-task">Що оберете :</h4>
+							<div class="actions">
+								<button type="button" @click="chooseNewspaper" class="button">Газету</button>
+								<button type="button" @click="chooseCognac" class="button">Коньяк</button>
+							</div>
+							<div v-if="cognac" class="box">
+								<h4 class="title-task">Можливо закуску бажаєте:</h4>
+							<div class="actions">
+								<button type="button" @click="onChoose(1)" class="button">Так</button>
+								<button type="button" @click="onChoose(2)" class="button">Ні</button>
+							</div>
+							</div>
+							<div v-if="onChoose">{{message}}</div>
+
+							<div v-if="newspaper">{{message}}</div>
+						</div>
+						<div v-else-if="isEkonom" class="box" :class="activeClass">
+							<h4 class="title-task">Що оберете :</h4>
+							<div class="actions">
+								<button type="button" @click="chooseBeer(1)" class="button">Пиво</button>
+								<button type="button" @click="chooseBeer(2)" class="button">Чіпси</button>
+							</div>
+							<div v-if="chooseBeer">{{message}}</div>
+						</div>
+					</div>
+				</div>
+
+					</div>
+			<script src="scriprt2.js"></script>
+		</div>
+	</main>
+</body>
+</html>

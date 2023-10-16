@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../css/style.css" />
+	 <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <title>task_1</title>
+  </head>
+  <body>
+    <main class="page1">
+      <div class="page1__container">
+        <h2>Задача №1</h2>
+        <p class="text">
+          Задача 1. Вводимо логіна і пароль. Якщо логін вірний відображаємо смайл. Якщо ні, то:
+1) якщо логін = Іван – колір повідомлення про помилку синій
+2) якщо хтось інший, то колір повідомлення червоний
+        </p>
+					<div class="page__task task" id="app">
+						<div class="task__line">
+							<label for="inputLog"><p>Login :</p></label>
+							<input autocomplete="off" type="text" id="inputLog" v-model="userLogin" class="task__input">
+						</div>
+						<div class="task__line">
+							<label for="inputPas"><p>Password :</p></label>
+							<input autocomplete="off" type="password" id="inputPas" v-model="userPassword" class="task__input">
+						</div>
+						<button type="button" @click="correctLogin" class="button">Ввести</button>
+						<div :class='colorClass' >{{message}}</div>
+					</div>
+					</div>
+        <script src="scriprt1.js"></script>
+      </div>
+    </main>
+  </body>
+</html>

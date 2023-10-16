@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../css/style.css" />
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <title>task_6</title>
+  </head>
+  <body>
+    <main class="page1">
+      <div class="page1__container">
+        <h2>Задача №6</h2>
+        <p class="text">
+          Задача. На кухню поступають замовлення. Спочатку ми додаємо їх у список “Очікують на виконання”, якщо повар береться робити — замовлення переходить у список “Виконуються”,   якщо замовлення виконано — переходить у список “Готові до виносу”. Якщо натиснути на “Подано” - страва зникає з таблиці
+        </p>
+        <div class="page__task task task-page" id="app6">
+				<div class="task6-container">
+					<form class="addForm">
+						<div class="line">
+							<label for="input-task6">Додати страву</label>
+							<input v-model="userDish" autocomplete="off" type="text" id="input-task6" class="input">
+						</div>
+						<button @click="addDish" type="button" class="task6-button">Додати</button>
+					</form>
+				<div class="showInfo">
+							<div class="dishContainer">
+								<h4 class="dishTitle">Очікують на виготовлення</h4>
+								<div class="dish-block" v-for="(dish,index) in waitingList" :key="index">
+									<span class="dishSpan">{{dish}}</span>
+									<button @click="onProcessing(index)" type="button">Готувати</button>
+								</div>
+							</div>
+							<div class="dishContainer">
+								<h4 class="dishTitle">Виконуються</h4>
+	
+								<div class="dish-block" v-for="(dish,index) in processingList" :key="index">
+									<span class="dishSpan">{{dish}}</span>
+									<button @click="onReady(index)" type="button">Приготовлено</button>
+								</div>
+							</div>
+							<div class="dishContainer">
+								<h4 class="dishTitle">Готові страви</h4>
+	
+								<div class="dish-block" v-for="(dish,index) in readyList" :key="index">
+									<span class="dishSpan">{{dish}}</span>
+									<button @click="done(index)" type="button">Подано</button>
+								</div>
+							</div>
+				</div>
+				</div>
+        </div>
+        <script src="scriprt6.js"></script>
+      </div>
+    </main>
+  </body>
+</html>

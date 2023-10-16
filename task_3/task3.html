@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="../css/style.css">
+	<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+	<title>task_3</title>
+</head>
+<body>
+	<main class="page3">
+		<div class="page3__container">
+			<h2>Задача №3</h2>
+			<p class="text">Елемент тренажера англійської. Виводимо зображення елемента і слово. Користувач вводить відповідь. Якщо вірно – відтворюємо фразу «Добре. Молодець!» (і додаємо зелену рамку до елемента), якщо ні - то відтворюємо фразу «Невірно, спробуйте ще раз» (і додаємо червону рамку). </p>
+			<div class="page__task task" id="app3">
+				<div class="page3-block card border" :class="answerClass">
+					<div class="card__image">
+						<img :src="wordsList[cardNum].src"  alt="image">
+					</div>
+					<h4 class="card__title">{{wordsList[cardNum].title}}</h4>
+						<form class="card__line line-card">
+							<label class="line-card__label" for="input">Ваш переклад</label>
+							<input autocomplete="off" type="text" id="input" v-model="userAnswer" class="task__input">
+						</form>
+						<div class="card-actions">
+							<button type="button" @click="showCard" class="card__button">Check</button>
+							<button type="button" @click="nextCard" class="card__button">Наступна картка</button>
+						</div>
+						<div v-if="counter" >Правильних відповідей : {{counter}}</div>
+						<div v-if="message" :class="{[answerMessage]:showCard}">{{message}}</div>
+				</div>
+						
+		</div>
+			<script src="scriprt3.js"></script>
+		</div>
+	</main>
+</body>
+</html>
